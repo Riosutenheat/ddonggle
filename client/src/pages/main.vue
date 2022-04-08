@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div id="mainview">
+    <SidebarMenu />
     <h1>{{titleText}}</h1>
     <img height="500" width="500" v-bind:src="getMainLogoUrl()"/>
     <h2>{{dashboardData}}
@@ -7,7 +8,12 @@
 </template>
 
 <script>
+import SidebarMenu from '../components/MenuTab/SidebarMenu.vue'
+// main page를 정의합니다.
 export default {
+  components: {
+    SidebarMenu
+  },
   created () {
     // 페이지 최초 생성 시
   },
@@ -23,6 +29,7 @@ export default {
     }
   },
   methods: {
+    // 메인 화면의 로고 경로 가져오기
     getMainLogoUrl () {
       var filename = 'cat_punch.png'
       var images = require.context('../assets/images/', false, /\.png$/)
@@ -46,4 +53,7 @@ export default {
 </script>
 
 <style>
+#mainview {
+  padding-left:50px;
+}
 </style>
